@@ -26,4 +26,3 @@ Outputs:
     Value: !Ref TodoHostedZoneId
     Export:
       Name: Todo-HostedZoneId
-
