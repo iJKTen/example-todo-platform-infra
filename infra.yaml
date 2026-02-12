@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Domain and certificate infrastructure for apitodo.jaik.me and todo.jaik.me
+
+Parameters:
+  TodoHostedZoneId:
+    Type: String
+    Description: The ID of the Hosted Zone created by AWS when the domain was purchased.
+
+Resources:
+  # Request a certificate for *.jaik.me
+  TodoClientCertificate:
+    Type: 'AWS::CertificateManager::Certificate'
+    Properties:
+      DomainName: '*.jaik.me'
+      ValidationMethod: DNS
+      DomainValidationOptions:
+        - DomainName: '*.jaik.me'
+          HostedZoneId: !Ref TodoHostedZoneId
+
+Outputs:
+  TodoClientCertificateArn:
+    Value: !Ref TodoClientCertificate
+    Export:
+      Name: Projects-CertificateArn
+  TodoHostedZoneId:
+    Value: !Ref TodoHostedZoneId
+    Export:
+      Name: Todo-HostedZoneId
+
