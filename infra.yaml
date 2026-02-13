@@ -14,13 +14,13 @@ Resources:
       DomainName: '*.jaik.me'
       SubjectAlternativeNames:
         - '*.jaik.me'
-        - '*.todoapi.jaik.me'
+        - '*.apitodo.jaik.me'
         - '*.todo.jaik.me'
       ValidationMethod: DNS
       DomainValidationOptions:
         - DomainName: '*.jaik.me'
           HostedZoneId: !Ref TodoHostedZoneId
-        - DomainName: '*.todoapi.jaik.me'
+        - DomainName: '*.apitodo.jaik.me'
           HostedZoneId: !Ref TodoHostedZoneId
         - DomainName: '*.todo.jaik.me'
           HostedZoneId: !Ref TodoHostedZoneId
