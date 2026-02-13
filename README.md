@@ -1,18 +1,18 @@
 # example-todo-platform-infra
 
-AWS CloudFormation infrastructure for the Todo platform. This stack provisions a wildcard TLS certificate for `*.jaik.me`, validated via DNS against a Route53 Hosted Zone.
+AWS CloudFormation infrastructure for the Todo platform. This stack provisions a wildcard TLS certificate for `*.jaik.me` with additional Subject Alternative Names for `*.todoapi.jaik.me` and `*.todo.jaik.me`, validated via DNS against a Route53 Hosted Zone.
 
 ## Resources
 
 The CloudFormation template (`infra.yaml`) creates:
 
-- **TodoClientCertificate** — A wildcard SSL/TLS certificate for `*.jaik.me`, validated via DNS.
+- **TodoClientCertificate** — A wildcard SSL/TLS certificate for `*.jaik.me` with SANs for `*.todoapi.jaik.me` and `*.todo.jaik.me`, validated via DNS.
 
 ### Cross-Stack Exports
 
 | Export Name              | Description                              |
 |--------------------------|------------------------------------------|
-| `Projects-CertificateArn`   | ARN of the `*.jaik.me` wildcard certificate |
+| `Projects-CertificateArn`   | ARN of the `*.jaik.me` wildcard certificate (includes SANs for `*.todoapi.jaik.me` and `*.todo.jaik.me`) |
 | `Todo-HostedZoneId`         | Route53 Hosted Zone ID for the domain       |
 
 ## Files

@@ -12,9 +12,17 @@ Resources:
     Type: 'AWS::CertificateManager::Certificate'
     Properties:
       DomainName: '*.jaik.me'
+      SubjectAlternativeNames:
+        - '*.jaik.me'
+        - '*.todoapi.jaik.me'
+        - '*.todo.jaik.me'
       ValidationMethod: DNS
       DomainValidationOptions:
         - DomainName: '*.jaik.me'
+          HostedZoneId: !Ref TodoHostedZoneId
+        - DomainName: '*.todoapi.jaik.me'
+          HostedZoneId: !Ref TodoHostedZoneId
+        - DomainName: '*.todo.jaik.me'
           HostedZoneId: !Ref TodoHostedZoneId
 
 Outputs:
